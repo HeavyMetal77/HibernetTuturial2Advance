@@ -13,12 +13,20 @@ public class GetInstructorDetailDemo {
         Session currentSession = sessionFactory.getCurrentSession();
         try {
             currentSession.beginTransaction();
-            int theId = 1;
+            int theId = 5;
             InstructorDetail instructorDetail = currentSession.get(InstructorDetail.class, theId);
             System.out.println(instructorDetail);
             Instructor instructor = instructorDetail.getInstructor();
             System.out.println(instructor);
 
+            //для удаления без каскада - меняем мапинг
+            // @OneToOne(cascade = CascadeType.ALL, mappedBy = "instructorDetail")
+            // на
+            // @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            //              mappedBy = "instructorDetail")
+
+            instructorDetail.getInstructor().setInstructorDetail(null); // и разрываем связывание таблиц
+            currentSession.delete(instructorDetail);
             currentSession.getTransaction().commit();
 
         } catch (Exception ex) {

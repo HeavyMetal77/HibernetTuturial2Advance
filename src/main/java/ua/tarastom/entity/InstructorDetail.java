@@ -29,7 +29,9 @@ public class InstructorDetail {
     private String hobby;
 
     //!!!!!!!!!!!!!!!----------------  for bi-directional -------------------
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "instructorDetail")
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "instructorDetail")
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+              mappedBy = "instructorDetail") //при удалении не будет каскадного удаления
     private Instructor instructor;
 
     public InstructorDetail() {

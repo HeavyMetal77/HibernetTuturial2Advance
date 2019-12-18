@@ -17,10 +17,10 @@ public class CreateDemo {
 
         try{
             currentSession.beginTransaction();
-            InstructorDetail instructorDetail = new InstructorDetail("http://love2code.com/youtube", "JavaCoding");
-            Instructor instructor = new Instructor("Chad", "Darby", "chad@gmail.com");
-//            InstructorDetail instructorDetail = new InstructorDetail("http://love3code.com/youtube", "JavaCoding");
-//            Instructor instructor = new Instructor("Tim", "Bushalka", "tim@gmail.com");
+//            InstructorDetail instructorDetail = new InstructorDetail("http://love2code.com/youtube", "JavaCoding");
+//            Instructor instructor = new Instructor("Chad", "Darby", "chad@gmail.com");
+            InstructorDetail instructorDetail = new InstructorDetail("http://love3code.com/youtube", "JavaCoding");
+            Instructor instructor = new Instructor("Tim", "Bushalka", "tim@gmail.com");
             instructor.setInstructorDetail(instructorDetail);
 
 //             Note: this will ALSO save the details object because of CascadeType.ALL
